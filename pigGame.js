@@ -43,6 +43,12 @@ function makeStep() {
   } else if (card1 == 9 && card2 == 1) {
     gameDesks[1].push(card1);
     gameDesks[1].push(card2);
+  } else if (card1 == 2 && card2 == 8) {
+    gameDesks[0].push(card1);
+    gameDesks[0].push(card2);
+  } else if (card1 == 8 && card2 == 2) {
+    gameDesks[1].push(card1);
+    gameDesks[1].push(card2);
   } else if (card1 < card2) {
     gameDesks[1].push(card1);
     gameDesks[1].push(card2);
