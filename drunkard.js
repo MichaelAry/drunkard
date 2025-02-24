@@ -51,8 +51,6 @@ function goFullGame() {
   isWin = true;
 }
 
-
-
 function makeStep() {
   if (isWin) return;
   let player = step % 2;
