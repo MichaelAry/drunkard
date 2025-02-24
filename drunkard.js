@@ -51,6 +51,8 @@ function goFullGame() {
   isWin = true;
 }
 
+
+
 function makeStep() {
   if (isWin) return;
   let player = step % 2;
@@ -88,5 +90,15 @@ function makeStep() {
     table.push(card2);
   }
   step++;
+  renderCurrentStep();
+}
+
+function newGame() {
+  isWin = false;
+  step = 0;
+  deck = fillWholeDesk();
+  gameDecks[0] = crPlDecks();
+  gameDecks[1] = crPlDecks();
+  table = [];
   renderCurrentStep();
 }
