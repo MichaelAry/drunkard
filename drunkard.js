@@ -33,18 +33,18 @@ function crPlDecks() {
 }
 
 function renderCurrentStep() {
-  gameField.innerHTML = `Ход игрока: ${(step % 2) + 1}`;
-  gameField.innerHTML += `<br>1 Игрок (${
+  gameField.innerHTML = `ходит игрок: ${(step % 2) + 1}`;
+  gameField.innerHTML += `<br>1 игрок (${
     gameDecks[0].length
   } карт на руках): ${gameDecks[0].map((el) => suits[el - 6]).join(", ")}`;
-  gameField.innerHTML += `<br>2 Игрок (${
+  gameField.innerHTML += `<br>2 игрок (${
     gameDecks[1].length
   } карт на руках): ${gameDecks[1].map((el) => suits[el - 6]).join(", ")}`;
-  gameField.innerHTML += `<br>Стол: ${table.map((el) => suits[el - 6])}`;
-  gameField.innerHTML += `<br>Ход номер: ${step}`;
+  gameField.innerHTML += `<br>стол: ${table.map((el) => suits[el - 6])}`;
+  gameField.innerHTML += `<br>ход: ${step}`;
 }
 
-function playAllGame() {
+function goFullGame() {
   while (gameDecks[0].length > 0 && gameDecks[1].length > 0) {
     makeStep();
   }
@@ -54,16 +54,21 @@ function playAllGame() {
 function makeStep() {
   if (isWin) return;
   let player = step % 2;
-  if (gameDecks[player].length === 0) {
+  if (gameDecks[0].length === 0) {
     isWin = true;
-    console.log(`Игрок ${player + 1} выиграл!`);
+    alert(`игрок 2 победил, начните новую игру `);
+    renderCurrentStep();
+    return;
+  } else if (gameDecks[1].length === 0) {
+    isWin = true;
+    alert(`игрок 1 победил, начните новую игру `);
     renderCurrentStep();
     return;
   }
   let card1 = gameDecks[0].shift();
   let card2 = gameDecks[1].shift();
   if (card1 > card2) {
-    if (card1 === 14 && card2 === 6 /* || (card1 === 13 && card2 === 7)*/) {
+    if ((card1 === 14 && card2 === 6) || (card1 === 13 && card2 === 7)) {
       gameDecks[1].push(card1);
       gameDecks[1].push(card2);
     } else {
@@ -71,7 +76,7 @@ function makeStep() {
       gameDecks[0].push(card2);
     }
   } else if (card1 < card2) {
-    if (card1 === 6 && card2 === 14 /* || (card1 === 7 && card2 === 13)*/) {
+    if ((card1 === 6 && card2 === 14) || (card1 === 7 && card2 === 13)) {
       gameDecks[0].push(card1);
       gameDecks[0].push(card2);
     } else {
@@ -82,12 +87,6 @@ function makeStep() {
     table.push(card1);
     table.push(card2);
   }
-  if (gameDecks[0].length === 0 || gameDecks[1].length === 0) {
-    if (gameDecks[0].length === 0) gameDecks[0] = table;
-    else gameDecks[1] = table;
-    table = [];
-  }
   step++;
-
   renderCurrentStep();
 }
