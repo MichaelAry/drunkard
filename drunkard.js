@@ -46,10 +46,10 @@ function renderCurrentStep() {
   gameField.innerHTML = `ходит игрок: ${(step % 2) + 1}`;
   gameField.innerHTML += `<br>1 игрок (${
     gameDecks[0].length
-  } карт на руках): ${gameDecks[0].map((el) => suits[el - 6]).join(", ")}`;
+  } карт): ${gameDecks[0].map((el) => suits[el - 6]).join(", ")}`;
   gameField.innerHTML += `<br>2 игрок (${
     gameDecks[1].length
-  } карт на руках): ${gameDecks[1].map((el) => suits[el - 6]).join(", ")}`;
+  } карт): ${gameDecks[1].map((el) => suits[el - 6]).join(", ")}`;
   gameField.innerHTML += `<br>стол: ${table.map((el) => suits[el - 6])}`;
   gameField.innerHTML += `<br>ход: ${step}`;
 }
