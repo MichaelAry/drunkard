@@ -102,29 +102,29 @@ function makeStep() {
       if (card1 > card2) {
         if ((card1 === 14 && card2 === 6) || (card1 === 13 && card2 === 7)) {
           gameDecks[1].push(...table);
-          table = [];
           gameDecks[1].push(card1);
           gameDecks[1].push(card2);
+          table = [];
           break;
         } else {
           gameDecks[0].push(...table);
-          table = [];
           gameDecks[0].push(card1);
           gameDecks[0].push(card2);
+          table = [];
           break;
         }
       } else if (card1 < card2) {
         if ((card1 === 6 && card2 === 14) || (card1 === 7 && card2 === 13)) {
           gameDecks[0].push(...table);
-          table = [];
           gameDecks[0].push(card1);
           gameDecks[0].push(card2);
+          table = [];
           break;
         } else {
           gameDecks[1].push(...table);
-          table = [];
           gameDecks[1].push(card1);
           gameDecks[1].push(card2);
+          table = [];
           break;
         }
       }
