@@ -1,4 +1,4 @@
-const suits = ["6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+const CARDVALUES = ["6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 const N = 36;
 let step = 0;
 let table = [];
@@ -46,11 +46,11 @@ function renderCurrentStep() {
   gameField.innerHTML = `ходит игрок: ${(step % 2) + 1}`;
   gameField.innerHTML += `<br>1 игрок (${
     gameDecks[0].length
-  } карт): ${gameDecks[0].map((el) => suits[el - 6]).join(", ")}`;
+  } карт): ${gameDecks[0].map((el) => CARDVALUES[el - 6]).join(", ")}`;
   gameField.innerHTML += `<br>2 игрок (${
     gameDecks[1].length
-  } карт): ${gameDecks[1].map((el) => suits[el - 6]).join(", ")}`;
-  gameField.innerHTML += `<br>стол: ${table.map((el) => suits[el - 6])}`;
+  } карт): ${gameDecks[1].map((el) => CARDVALUES[el - 6]).join(", ")}`;
+  gameField.innerHTML += `<br>стол: ${table.map((el) => CARDVALUES[el - 6])}`;
   gameField.innerHTML += `<br>ход: ${step}`;
 }
 
