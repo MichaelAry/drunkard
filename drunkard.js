@@ -13,6 +13,16 @@ console.log(gameDecks[1]);
 
 renderCurrentStep();
 
+function newGame() {
+  isWin = false;
+  step = 0;
+  deck = fillWholeDesk();
+  gameDecks[0] = crPlDecks();
+  gameDecks[1] = crPlDecks();
+  table = [];
+  renderCurrentStep();
+}
+
 function fillWholeDesk() {
   let temp = Array.from({ length: N }, (item, index) => {
     return 6 + (index % 9);
@@ -84,19 +94,42 @@ function makeStep() {
       gameDecks[1].push(card2);
     }
   } else {
-    table.push(card1);
-    table.push(card2);
+    while (card1 === card2) {
+      table.push(card1);
+      table.push(card2);
+      card1 = gameDecks[0].shift();
+      card2 = gameDecks[1].shift();
+      if (card1 > card2) {
+        if ((card1 === 14 && card2 === 6) || (card1 === 13 && card2 === 7)) {
+          gameDecks[1].push(...table);
+          table = [];
+          gameDecks[1].push(card1);
+          gameDecks[1].push(card2);
+          break;
+        } else {
+          gameDecks[0].push(...table);
+          table = [];
+          gameDecks[0].push(card1);
+          gameDecks[0].push(card2);
+          break;
+        }
+      } else if (card1 < card2) {
+        if ((card1 === 6 && card2 === 14) || (card1 === 7 && card2 === 13)) {
+          gameDecks[0].push(...table);
+          table = [];
+          gameDecks[0].push(card1);
+          gameDecks[0].push(card2);
+          break;
+        } else {
+          gameDecks[1].push(...table);
+          table = [];
+          gameDecks[1].push(card1);
+          gameDecks[1].push(card2);
+          break;
+        }
+      }
+    }
   }
   step++;
-  renderCurrentStep();
-}
-
-function newGame() {
-  isWin = false;
-  step = 0;
-  deck = fillWholeDesk();
-  gameDecks[0] = crPlDecks();
-  gameDecks[1] = crPlDecks();
-  table = [];
   renderCurrentStep();
 }
