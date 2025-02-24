@@ -55,10 +55,9 @@ function renderCurrentStep() {
 }
 
 function goFullGame() {
-  while (gameDecks[0].length > 0 && gameDecks[1].length > 0) {
+  while (!isWin) {
     makeStep();
   }
-  isWin = true;
 }
 
 function makeStep() {
