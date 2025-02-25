@@ -68,7 +68,7 @@ function makeStep() {
     alert(`игрок 2 победил, начните новую игру `);
     renderCurrentStep();
     return;
-  } else if (gameDecks[1].length === 0) {
+  } else if (gameDecks[1].length == 0) {
     isWin = true;
     alert(`игрок 1 победил, начните новую игру `);
     renderCurrentStep();
@@ -77,7 +77,7 @@ function makeStep() {
   let card1 = gameDecks[0].shift();
   let card2 = gameDecks[1].shift();
   if (card1 > card2) {
-    if ((card1 === 14 && card2 === 6) || (card1 === 13 && card2 === 7)) {
+    if ((card1 == 14 && card2 == 6) || (card1 == 13 && card2 == 7)) {
       gameDecks[1].push(card1);
       gameDecks[1].push(card2);
     } else {
@@ -85,7 +85,7 @@ function makeStep() {
       gameDecks[0].push(card2);
     }
   } else if (card1 < card2) {
-    if ((card1 === 6 && card2 === 14) || (card1 === 7 && card2 === 13)) {
+    if ((card1 == 6 && card2 == 14) || (card1 == 7 && card2 == 13)) {
       gameDecks[0].push(card1);
       gameDecks[0].push(card2);
     } else {
@@ -99,7 +99,7 @@ function makeStep() {
       card1 = gameDecks[0].shift();
       card2 = gameDecks[1].shift();
       if (card1 > card2) {
-        if ((card1 === 14 && card2 === 6) || (card1 === 13 && card2 === 7)) {
+        if ((card1 == 14 && card2 == 6) || (card1 == 13 && card2 == 7)) {
           gameDecks[1].push(...table);
           gameDecks[1].push(card1);
           gameDecks[1].push(card2);
@@ -113,7 +113,7 @@ function makeStep() {
           break;
         }
       } else if (card1 < card2) {
-        if ((card1 === 6 && card2 === 14) || (card1 === 7 && card2 === 13)) {
+        if ((card1 == 6 && card2 == 14) || (card1 == 7 && card2 == 13)) {
           gameDecks[0].push(...table);
           gameDecks[0].push(card1);
           gameDecks[0].push(card2);
